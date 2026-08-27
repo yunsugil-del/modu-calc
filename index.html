@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 모두의카드 환급 계산기 - 국토교통부 공식 기준</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 헤더 섹션 -->
+    <header class="header">
+      <h1 class="main-title">모두의카드 환급 계산기</h1>
+      <p class="sub-title">내 교통비, 얼마나 돌려받을 수 있을까?</p>
+      <p class="info-text">2026년 국토교통부 대광위 공식 기준 예상 환급액 계산</p>
+    </header>
+
+    <!-- 입력 폼 섹션 -->
+    <main class="form-container">
+      <!-- STEP 1 -->
+      <section class="card-step">
+        <label for="monthlyCost" class="step-label">STEP 1. 월 대중교통비</label>
+        <div class="input-wrap">
+          <input type="text" id="monthlyCost" inputmode="numeric" placeholder="예: 120,000" autocomplete="off">
+          <span class="unit">원</span>
+        </div>
+
+        <!-- 광역/GTX 이용 여부 -->
+        <div class="sub-step-group">
+          <span class="sub-step-label">광역버스·신분당선·GTX(1회 3,000원 이상)를 이용하시나요?</span>
+          <div class="chip-grid cols-2">
+            <label class="chip-item">
+              <input type="radio" name="hasExpress" value="yes">
+              <span>예 (광역·GTX 포함)</span>
+            </label>
+            <label class="chip-item">
+              <input type="radio" name="hasExpress" value="no" checked>
+              <span>아니오 (일반 시내·지하철)</span>
+            </label>
+          </div>
+          <span class="input-hint">※ 일반형은 1회 3,000원 미만 수단 전용이며, 광역·GTX 이용 시 플러스형 대상입니다.</span>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="card-step">
+        <label for="monthlyCount" class="step-label">STEP 2. 월 이용 횟수</label>
+        <div class="input-wrap">
+          <input type="text" id="monthlyCount" inputmode="numeric" placeholder="예: 20" autocomplete="off">
+          <span class="unit">회</span>
+        </div>
+        
+        <!-- 가입 첫 달 예외 선택 -->
+        <div class="sub-step-group">
+          <span class="sub-step-label">가입 첫 달인가요?</span>
+          <div class="chip-grid cols-2">
+            <label class="chip-item">
+              <input type="radio" name="isFirstMonth" value="yes">
+              <span>예 (첫 달 혜택)</span>
+            </label>
+            <label class="chip-item">
+              <input type="radio" name="isFirstMonth" value="no" checked>
+              <span>아니오 (일반)</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="card-step">
+        <span class="step-label">STEP 3. 이용자 유형</span>
+        <div class="chip-grid cols-3">
+          <label class="chip-item">
+            <input type="radio" name="userType" value="general" checked>
+            <span>일반</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="userType" value="youth">
+            <span>청년</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="userType" value="child2">
+            <span>2자녀</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="userType" value="senior">
+            <span>어르신</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="userType" value="child3">
+            <span>3자녀 이상</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="userType" value="lowIncome">
+            <span>저소득</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="card-step">
+        <span class="step-label">STEP 4. 지역</span>
+        <div class="chip-grid cols-2">
+          <label class="chip-item">
+            <input type="radio" name="region" value="capital" checked>
+            <span>수도권</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="region" value="local">
+            <span>일반 지방권</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="region" value="preferential">
+            <span>우대지원지역</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="region" value="special">
+            <span>특별지원지역</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 5 -->
+      <section class="card-step info-card-step">
+        <span class="step-label">STEP 5. 환급 방식 자동 비교</span>
+        <div class="auto-calc-box">
+          <p class="auto-calc-title">✨ 최적 혜택 자동 적용 시스템</p>
+          <p class="auto-calc-desc">입력하신 이용 수단과 금액을 분석하여 정률제와 정액제(일반/플러스) 중 가장 많은 환급금을 자동으로 찾아 적용합니다.</p>
+        </div>
+      </section>
+
+      <!-- STEP 6 -->
+      <section class="card-step">
+        <span class="step-label">STEP 6. 적용 기간</span>
+        <div class="chip-grid cols-2">
+          <label class="chip-item">
+            <input type="radio" name="period" value="halfPrice" id="periodHalfPrice">
+            <span>2026년 4~9월 반값</span>
+          </label>
+          <label class="chip-item">
+            <input type="radio" name="period" value="regular" id="periodRegular">
+            <span>일반 기간</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 7 -->
+      <section class="card-step">
+        <label for="timeShiftCost" class="step-label">STEP 7. 출퇴근 시차시간 이용금액</label>
+        <p class="step-desc">월 대중교통비 중 아래 시차시간에 이용한 교통비 합계를 입력하세요.</p>
+        <div class="time-shift-info-box">
+          <strong>공식 출퇴근 시차시간 (탑승 기준)</strong>
+          <p>• 05:30~06:30 / 09:00~10:00 / 16:00~17:00 / 19:00~20:00</p>
+        </div>
+        <div class="input-wrap">
+          <input type="text" id="timeShiftCost" inputmode="numeric" placeholder="예: 40,000 (모르면 0원)" autocomplete="off">
+          <span class="unit">원</span>
+        </div>
+        <div class="easy-hint-box">
+          💡 <strong>잘 모르시면 0원을 입력하셔도 됩니다.</strong> (입력 시 2026년 4~9월 반값 기간에 +30%p 가산 환급 적용)
+        </div>
+      </section>
+
+      <!-- 버튼 컨트롤 -->
+      <div class="button-group">
+        <button type="button" id="btnCalculate" class="btn btn-primary">예상 환급액 계산하기</button>
+        <button type="button" id="btnReset" class="btn btn-secondary">입력값 초기화</button>
+      </div>
+    </main>
+
+    <!-- 결과 섹션 -->
+    <section id="resultSection" class="result-container" style="display: none;">
+      <!-- 15회 미만 안내 블록 -->
+      <div id="underCountBlock" class="warning-box" style="display: none;">
+        <h3>⚠️ 환급 대상 제외 안내</h3>
+        <p>모두의카드는 <strong>월 15회 이상</strong> 이용해야 환급 대상입니다.<br><small>(가입 첫 달인 경우 상단의 첫 달 혜택을 '예'로 선택해주세요)</small></p>
+      </div>
+
+      <!-- 정상 계산 결과 블록 -->
+      <div id="validResultBlock" style="display: none;">
+        <div class="main-result-card">
+          <span class="result-badge" id="bestMethodBadge">계산 완료</span>
+          <p class="result-title">최종 예상 환급액</p>
+          <h2 class="result-amount" id="finalRefundText">0원</h2>
+          <p class="yearly-text">12개월 단순 환산: <strong id="yearlyRefundText">약 0원</strong></p>
+          <span class="micro-notice">※ 월 예상 환급액 × 12개월로 단순 계산한 참고용 금액입니다.</span>
+        </div>
+
+        <div class="detail-card">
+          <h3 class="detail-title">방식별 환급액 비교</h3>
+          <ul class="detail-list">
+            <li><span>정률제 예상 환급액</span><strong id="rateRefundText">0원</strong></li>
+            <li><span>일반형 정액제 예상 환급액</span><strong id="fixedBasicRefundText">0원</strong></li>
+            <li><span>플러스형 정액제 예상 환급액</span><strong id="fixedPlusRefundText">0원</strong></li>
+            <li class="separator"></li>
+            <li><span>최종 적용 방식</span><strong id="appliedMethodText" class="text-blue">-</strong></li>
+            <li><span>월 전체 교통비</span><span id="summaryCostText">0원</span></li>
+            <li id="regularCostRow" style="display: none;"><span>ㄴ 일반 시간대 금액</span><span id="regularCostText">0원</span></li>
+            <li id="timeShiftCostRow" style="display: none;"><span>ㄴ 시차 시간대 금액</span><span id="timeShiftCostSummaryText">0원</span></li>
+            <li><span>환급 후 실질 부담액</span><strong id="actualCostText" class="text-primary">0원</strong></li>
+          </ul>
+        </div>
+
+        <div class="conditions-summary" id="appliedConditionSummary"></div>
+
+        <button type="button" id="btnRecalculate" class="btn btn-outline">조건 변경 후 다시 계산</button>
+      </div>
+
+      <!-- 공통 유의사항 -->
+      <footer class="notice-footer">
+        <p class="disclaimer">※ 본 계산기는 입력한 조건을 바탕으로 한 예상 환급액을 제공합니다. 실제 환급액은 이용내역, 적용 조건 및 제도 운영 기준에 따라 달라질 수 있습니다.</p>
+        <p class="source">자료 기준: 국토교통부 대도시권광역교통위원회 2026년 모두의카드 공식 안내</p>
+      </footer>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
